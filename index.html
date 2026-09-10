@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>Creative — Coming Soon</title>
+  <meta
+    name="description"
+    content="Creative — Developer, designer and builder. Portfolio coming soon."
+  />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+    :root {
+      --bg: #0b0b0b;
+      --grid: rgba(170, 175, 170, 0.18);
+      --text: #f4f4f1;
+      --muted: #a8aaa5;
+      --accent: #b9c7bd;
+      --line: #d7d9d4;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: "DM Sans", sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Grid background */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+
+      background-image:
+        linear-gradient(to right, var(--grid) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+
+      background-size: 10vw 10vw;
+    }
+
+    /* Subtle dark overlay */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+
+      background:
+        radial-gradient(
+          circle at 50% 50%,
+          transparent 0%,
+          rgba(0, 0, 0, 0.15) 60%,
+          rgba(0, 0, 0, 0.35) 100%
+        );
+    }
+
+    .page {
+      min-height: 100vh;
+      padding: 7vh 8vw 5vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.04em;
+    }
+
+    .logo {
+      font-weight: 500;
+    }
+
+    .handle {
+      color: var(--muted);
+    }
+
+    /* Main */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8vh 0;
+    }
+
+    .hero {
+      width: min(100%, 1050px);
+    }
+
+    .eyebrow {
+      color: var(--muted);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 28px;
+    }
+
+    .title-wrap {
+      position: relative;
+      width: fit-content;
+    }
+
+    h1 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(64px, 11vw, 160px);
+      line-height: 0.83;
+      letter-spacing: -0.075em;
+      font-weight: 700;
+      max-width: 1000px;
+    }
+
+    .line {
+      display: block;
+    }
+
+    .accent-word {
+      position: relative;
+      display: inline-block;
+    }
+
+    /*
+      Hand-drawn circle around "creative"
+    */
+    .scribble-circle {
+      position: absolute;
+      left: -4%;
+      top: -18%;
+      width: 108%;
+      height: 145%;
+      border: 3px solid var(--accent);
+      border-radius: 48% 52% 45% 55%;
+      transform: rotate(-5deg);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .scribble-circle::after {
+      content: "";
+      position: absolute;
+      inset: 4px -3px -2px 5px;
+      border: 2px solid var(--accent);
+      border-radius: 55% 45% 52% 48%;
+      transform: rotate(3deg);
+      opacity: 0.7;
+    }
+
+    /*
+      Hand-drawn underline
+    */
+    .underline {
+      position: absolute;
+      width: 62%;
+      height: 20px;
+      right: -4%;
+      bottom: -32px;
+      border-top: 4px solid var(--accent);
+      border-radius: 50%;
+      transform: rotate(-1deg);
+    }
+
+    .underline::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 9px;
+      top: -5px;
+      left: 5px;
+      border-top: 2px solid var(--accent);
+      border-radius: 50%;
+      transform: rotate(2deg);
+      opacity: 0.65;
+    }
+
+    .description {
+      margin-top: 75px;
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(215, 217, 212, 0.55);
+      padding-top: 18px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+
+      font-size: 13px;
+    }
+
+    .contact {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .contact-label {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-right: 8px;
+    }
+
+    .contact a {
+      color: var(--text);
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .contact a:hover {
+      opacity: 0.55;
+    }
+
+    .separator {
+      color: #555;
+    }
+
+    .page-number {
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: var(--accent);
+      color: #111;
+      border-radius: 50%;
+
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+    }
+
+    /* Mobile */
+    @media (max-width: 700px) {
+      .page {
+        padding: 5vh 7vw 4vh;
+      }
+
+      header {
+        font-size: 12px;
+      }
+
+      body::before {
+        background-size: 20vw 20vw;
+      }
+
+      main {
+        padding: 10vh 0;
+      }
+
+      h1 {
+        font-size: clamp(58px, 18vw, 110px);
+        line-height: 0.86;
+      }
+
+      .eyebrow {
+        font-size: 11px;
+        margin-bottom: 22px;
+      }
+
+      .scribble-circle {
+        border-width: 2px;
+      }
+
+      .underline {
+        bottom: -22px;
+        border-width: 3px;
+      }
+
+      .description {
+        margin-top: 55px;
+        font-size: 15px;
+        max-width: 90%;
+      }
+
+      footer {
+        align-items: flex-end;
+      }
+
+      .contact {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 7px;
+      }
+
+      .separator {
+        display: none;
+      }
+
+      .page-number {
+        width: 42px;
+        height: 42px;
+      }
+    }
+
+    /* Very small screens */
+    @media (max-width: 400px) {
+      h1 {
+        font-size: 17vw;
+      }
+
+      .description {
+        font-size: 14px;
+      }
+    }
+
+    /* Simple entrance animation */
+    @media (prefers-reduced-motion: no-preference) {
+      .hero {
+        animation: reveal 0.9s ease-out both;
+      }
+
+      @keyframes reveal {
+        from {
+          opacity: 0;
+          transform: translateY(25px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page">
+
+    <header>
+      <div class="logo">CREATIVE</div>
+      <div class="handle">@creative.indevs</div>
+    </header>
+
+    <main>
+      <section class="hero">
+
+        <div class="eyebrow">
+          Portfolio / 2026
+        </div>
+
+        <div class="title-wrap">
+
+          <h1>
+            <span class="line accent-word">
+              Creative
+              <span class="scribble-circle"></span>
+            </span>
+
+            <span class="line">is a</span>
+
+            <span class="line">work</span>
+
+            <span class="line">
+              in progress
+            </span>
+          </h1>
+
+          <div class="underline"></div>
+
+        </div>
+
+        <p class="description">
+          A digital space for projects, experiments, APIs,
+          websites and everything I'm building on the web.
+          The portfolio is currently under construction.
+        </p>
+
+      </section>
+    </main>
+
+    <footer>
+
+      <div class="contact">
+        <span class="contact-label">Contact</span>
+
+        <a
+          href="https://t.me/creativedemon"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Telegram @creativedemon
+        </a>
+
+        <span class="separator">/</span>
+
+        <a href="mailto:demon@manjitv.in">
+          demon@manjitv.in
+        </a>
+      </div>
+
+      <div class="page-number">
+        01
+      </div>
+
+    </footer>
+
+  </div>
+
+</body>
+</html>
